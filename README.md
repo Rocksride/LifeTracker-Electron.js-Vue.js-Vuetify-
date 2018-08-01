@@ -1,7 +1,4 @@
 # Life Tracer App
-<p align="center">
-  <img width="460" height="300" src="./src/images/Logo.PNG">
-</p>
 ![Logo](./src/images/Logo.PNG)
 > Project for tracking and noting your life
 
