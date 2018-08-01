@@ -1,5 +1,5 @@
 # Life Tracer App
-![Logo](./src/images/LOGO.PNG)
+![Logo](./src/images/Logo.PNG)
 > Project for tracking and noting your life
 
 ### Build Setup
