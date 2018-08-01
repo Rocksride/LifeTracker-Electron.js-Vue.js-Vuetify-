@@ -1,8 +1,8 @@
-# my-project
+# Life Tracer App
+![Logo](./src/images/LOGO.PNG)
+> Project for tracking and noting your life
 
-> An electron-vue project
-
-#### Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
