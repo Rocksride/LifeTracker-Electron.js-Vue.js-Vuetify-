@@ -6,9 +6,11 @@
         </v-btn>
         <v-container fluid style="min-height: 0;" grid-list-lg>
             <h2 class="text-xs-center">Tags</h2>
-            <v-layout row wrap>
-                <app-tag v-for='tag in allTags' :key='tag.counter' :tag='tag'></app-tag>
-            </v-layout>
+            <v-container>
+                <v-layout row wrap>
+                    <app-tag v-for='tag in allTags' :key='tag.counter' :tag='tag'></app-tag>
+                </v-layout>
+            </v-container>
         </v-container>
     </div>
 </template>

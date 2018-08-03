@@ -2,21 +2,25 @@
   <v-flex sm6 xs10 md3 lg3>
     <v-card :style='{backgroundColor:tag.color, borderRadius: "30px"}' class="white--text">
       <v-card-title primary-title>
-        <div class="headline">
-          <div>
-            <p class="text-xs-center">{{tag.name}} </p>
-          </div>
-        </div>
-
+        <v-container fluid>
+          <v-layout row wrap>
+            <v-flex xs9>
+                  <p :style='{textTransform: "uppercase"}' class="headline text-xs-center">{{tag.name}} </p>
+            </v-flex>
+            <v-flex xs3 md3 lg3 sm3>
+                    <v-icon style='cursor:pointer' @click='editTag'    >edit</v-icon>
+            </v-flex >
+          </v-layout>
+        </v-container>
       </v-card-title>
+      
       <v-card-actions>
-        <router-link tag='button' :to="toInfo">
-          <v-btn flat dark>info</v-btn>
-        </router-link>
-        <button tag='button' @click='editTag'>
-          <v-btn flat dark>edit</v-btn>
-        </button>
-        <v-btn flat dark @click='ensure'>Delete</v-btn>
+              <router-link tag='span' :to="toInfo">
+                <v-btn  round  color='success' >
+                    Details
+                </v-btn>
+              </router-link>
+              <v-btn  round color='error'  @click='ensure'>Delete</v-btn>
       </v-card-actions>
     </v-card>
     <v-dialog v-model="dialog" persistent>
@@ -24,8 +28,8 @@
         <v-card-title class="headline">Delete tag?</v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="dialog = false">Cancel</v-btn>
-          <v-btn color="red darken-1" @click='deleteTag' flat @click.native="dialog = false">Yes</v-btn>
+          <v-btn round color="blue darken-1" flat @click.native="dialog = false">Cancel</v-btn>
+          <v-btn round color="red darken-1" @click='deleteTag' flat @click.native="dialog = false">Yes</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

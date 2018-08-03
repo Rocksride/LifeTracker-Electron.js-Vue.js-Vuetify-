@@ -1,14 +1,20 @@
 import * as types from "../types.js";
+import * as R from 'ramda';
 
 const state = {
-  tasks: [
-    {
+  tasks: [{
       index: 0,
       projectIndex: 0,
       description: "000",
       totalMinutes: 5,
-      start: { date: "21.10.2017", time: "13:30" },
-      end: { date: "21.10.2017", time: "14:30" },
+      start: {
+        date: "21.10.2017",
+        time: "13:30"
+      },
+      end: {
+        date: "21.10.2017",
+        time: "14:30"
+      },
       tagsIndexes: [0, 1, 2, 3]
     },
     {
@@ -16,8 +22,14 @@ const state = {
       projectIndex: 0,
       description: "111",
       totalMinutes: 5,
-      start: { date: "21.10.2017", time: "13:30" },
-      end: { date: "21.10.2017", time: "15:30" },
+      start: {
+        date: "21.10.2017",
+        time: "13:30"
+      },
+      end: {
+        date: "21.10.2017",
+        time: "15:30"
+      },
       tagsIndexes: [0, 1, 2, 3]
     },
     {
@@ -25,8 +37,14 @@ const state = {
       projectIndex: 1,
       description: "222",
       totalMinutes: 5,
-      start: { date: "21.10.2017", time: "12:30" },
-      end: { date: "21.10.2017", time: "13:30" },
+      start: {
+        date: "21.10.2017",
+        time: "12:30"
+      },
+      end: {
+        date: "21.10.2017",
+        time: "13:30"
+      },
       tagsIndexes: [0, 1, 2, 3]
     },
     {
@@ -34,21 +52,26 @@ const state = {
       projectIndex: 1,
       description: "333",
       totalMinutes: 5,
-      start: { date: "21.10.2017", time: "13:30" },
-      end: { date: "21.10.2017", time: "13:35" },
+      start: {
+        date: "21.10.2017",
+        time: "13:30"
+      },
+      end: {
+        date: "21.10.2017",
+        time: "13:35"
+      },
       tagsIndexes: [0, 1, 2, 3],
     }
   ]
 };
 const getters = {
-  [types.TASKS]: state => {
-      return state.tasks
-    // const projects = state.projects;
-    // console.log(state.tasks);
-    // return state.tasks.map(task => {
-    //   task.color = projects.filter(proj => proj.index === task.index)[0].color;
-    //   return task;
-    // });
+  [types.TASKS]: (state, getters) => {
+    const allProjects = getters[types.PROJECTS];
+    const tasks = state.tasks;
+
+    const findProject = task => R.find(R.propEq('index', task.projectIndex), allProjects);
+    const pickProjectName = R.pipe(findProject, R.pick(['name','color']));
+    return R.map(t => R.merge(t, pickProjectName(t)), tasks)
   }
   // [types.TASKS_CHECK_NAME_EXIST]: (state) => taskNameTo => {
   //     return state.tasks.reduce((acc, curr) => {
@@ -63,8 +86,7 @@ const mutations = {
   [types.MUTATE_ADD_TASK]: (state, payload) => {
     try {
       payload.index = state.tasks.sort((a, b) => b.index - a.index)[0].index + 1;
-    }
-    catch(e) {
+    } catch (e) {
       payload.index = 0;
     }
     state.tasks.push(payload);
@@ -76,21 +98,34 @@ const mutations = {
     state.tasks.sort((a, b) => a.index - b.index)
   },
   [types.MUTATE_DELETE_TASK]: (state, payload) => {
-    const index = state.tasks.findIndex(({ index }) => index === payload.index);
+    const index = state.tasks.findIndex(({
+      index
+    }) => index === payload.index);
     state.tasks.splice(index, 1);
     state.tasks.sort((a, b) => a.index - b.index)
   }
 };
 
 const actions = {
-  [types.ADD_TASK]: ({ commit }, payload) => {
+  [types.ADD_TASK]: ({
+    commit
+  }, payload) => {
     commit(types.MUTATE_ADD_TASK, payload);
   },
-  [types.DELETE_TASK]: ({ commit }, payload) => {
+  [types.DELETE_TASK]: ({
+    commit
+  }, payload) => {
     commit(types.MUTATE_DELETE_TASK, payload);
   },
-  [types.ALTER_TASK]: ({commit}, payload) => {
+  [types.ALTER_TASK]: ({
+    commit
+  }, payload) => {
     commit(types.MUTATE_ALTER_TASK, payload);
   }
 };
-export default { state, mutations, getters, actions };
+export default {
+  state,
+  mutations,
+  getters,
+  actions
+};

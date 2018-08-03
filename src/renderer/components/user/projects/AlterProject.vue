@@ -1,6 +1,6 @@
 <template>
-    <v-container text-xs-center>
-        <v-layout>
+    <v-container fluid pa10 text-xs-center>
+        <v-layout row>
            
             <v-flex xs10 lg10 >
                 <v-form v-model="valid">

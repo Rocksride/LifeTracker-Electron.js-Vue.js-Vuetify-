@@ -1,12 +1,10 @@
 <template>
-  <div id="app">
     <v-app dark>
       <transition-group tag='p' name='global-router-view' mode='out-in'>
         <router-view key='router'></router-view>
         <app-modals key='modals'></app-modals>
         </transition-group>
     </v-app>
-  </div>
 </template>
 
 <script>
@@ -50,7 +48,7 @@ export default {
 </script>
 
 <style >
-
+html {overflow-y: auto}
 @keyframes slide-in {
   from{
     opacity: 0;
@@ -77,10 +75,10 @@ export default {
   }
 }
 .global-router-view-enter-active{
-  animation: slide-in .18s ease forwards;
+  animation: slide-in .1s ease forwards;
 }
 .global-router-view-leave-active{
-  animation: slide-out .18s ease forwards;
+  animation: slide-out .1s ease forwards;
 }
 .v--modal-overlay {
   background: transparent;
