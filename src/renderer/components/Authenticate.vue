@@ -8,10 +8,10 @@
         <v-btn flat @click="signUp">Sign up</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <transition name='global-router-view' mode='out-in'>
+    <!-- <transition name='global-router-view' mode='out-in'> -->
       <app-alert v-if='error' @dismissed='onDismissed' :text='error.message'>
       </app-alert>
-    </transition>
+    <!-- </transition> -->
     <router-view :isLoading='isLoading'></router-view>
   </div>
 </template>

@@ -54,6 +54,7 @@ export default {
       this.$store.dispatch(types.DELETE_TAG, this.tag);
     },
     editTag() {
+      console.log('asdasda')
       this.$modal.show(modalNames.NEW_TAG, {id: this.tag.index})
     }
   },

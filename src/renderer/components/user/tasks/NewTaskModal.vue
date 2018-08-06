@@ -15,7 +15,7 @@
                 <v-flex xs12 sm5 lg5>
                   <v-card>
                     <v-card-text>
-                      <v-menu lazy :close-on-content-click="false" v-model="start.startDateToggle" :rules='dataRules' transition="scale-transition"
+                      <v-menu lazy :close-on-content-click="false" v-model="start.startDateToggle" :rules='dataRules' 
                         offset-y full-width :nudge-right="40" max-width="290px" min-width="290px">
                         <v-text-field slot="activator" :rules='dataRules' label="Start date" v-model="start.startDate" prepend-icon="event" readonly></v-text-field>
                         <v-date-picker :allowed-dates='isDateBeforeNow' v-model="start.startDate" no-title scrollable actions>
@@ -34,7 +34,7 @@
                           </template>
                         </v-date-picker>
                       </v-menu>
-                      <v-menu lazy :close-on-content-click="false" v-model="start.startTimeToggle" :rules='dataRules' transition="scale-transition"
+                      <v-menu lazy :close-on-content-click="false" v-model="start.startTimeToggle" :rules='dataRules' 
                         offset-y full-width :nudge-right="40" max-width="290px" min-width="290px">
                         <v-text-field slot="activator" :rules='dataRules' label="Start time" v-model="start.startTime" prepend-icon="access_time"
                           readonly></v-text-field>
@@ -58,7 +58,7 @@
                 <v-flex xs12 sm5 lg5>
                   <v-card>
                     <v-card-text>
-                      <v-menu lazy :close-on-content-click="false" v-model="end.endDateToggle" :rules='dataRules' transition="scale-transition"
+                      <v-menu lazy :close-on-content-click="false" v-model="end.endDateToggle" :rules='dataRules' 
                         offset-y full-width :nudge-right="40" max-width="290px" min-width="290px">
                         <v-text-field slot="activator" :rules='dataRules' label="End date" v-model="end.endDate" prepend-icon="event" readonly></v-text-field>
                         <v-date-picker :allowed-dates='restrictEndDate' v-model="end.endDate" no-title scrollable actions>
@@ -76,7 +76,7 @@
                         </v-date-picker>
                       </v-menu>
   
-                      <v-menu lazy :close-on-content-click="false" v-model="end.endTimeToggle" :rules='dataRules' transition="scale-transition"
+                      <v-menu lazy :close-on-content-click="false" v-model="end.endTimeToggle" :rules='dataRules' 
                         offset-y full-width :nudge-right="40" max-width="290px" min-width="290px">
                         <v-text-field slot="activator" :rules='dataRules' label="End time" v-model="end.endTime" prepend-icon="access_time" readonly></v-text-field>
                         <v-time-picker :allowed-hours='restrictEndHours' format='24hr' v-model="end.endTime" no-title scrollable actions>

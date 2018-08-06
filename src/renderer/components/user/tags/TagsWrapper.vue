@@ -1,8 +1,8 @@
 <template>
         <div>
-        <transition name='global-router-view' mode='out-in'>
+        <!-- <transition name='global-router-view' mode='out-in'> -->
           <router-view></router-view>
-        </transition>
+        <!-- </transition> -->
         </div>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
     <v-app dark>
-      <transition-group tag='p' name='global-router-view' mode='out-in'>
+      <!-- <transition-group tag='p' name='global-router-view' mode='out-in'> -->
         <router-view key='router'></router-view>
         <app-modals key='modals'></app-modals>
-        </transition-group>
+        <!-- </transition-group> -->
     </v-app>
 </template>
 
